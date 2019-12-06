@@ -30226,7 +30226,7 @@ var Component = backbone__WEBPACK_IMPORTED_MODULE_5___default.a.Model.extend(dom
     }
 
     var attrString = attrs.length ? " ".concat(attrs.join(' ')) : '';
-    var code = "<".concat(tag).concat(attrString).concat(sTag ? '/' : '', ">").concat(model.get('content'));
+    var code = "<".concat(tag).concat(attrString).concat(sTag ? '/' : '', ">").concat(escape(model.get('content')));
     model.get('components').each(function (comp) {
       return code += comp.toHTML(opts);
     });
@@ -36861,7 +36861,7 @@ var defaultConfig = {
   editors: editors,
   plugins: plugins,
   // Will be replaced on build
-  version: '0.15.9',
+  version: '0.15.10',
 
   /**
    * Initialize the editor with passed options

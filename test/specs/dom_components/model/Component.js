@@ -477,7 +477,7 @@ describe('Text Component', () => {
       attributes: { 'data-test': 'value' },
       content: 'test content'
     });
-    expect(obj.toHTML()).toEqual('<div data-test="value">test content</div>');
+    expect(obj.toHTML()).toEqual('<div data-test="value">test%20content</div>');
   });
 });
 
