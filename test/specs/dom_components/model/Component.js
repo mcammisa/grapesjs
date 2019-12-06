@@ -479,6 +479,16 @@ describe('Text Component', () => {
     });
     expect(obj.toHTML()).toEqual('<div data-test="value">test content</div>');
   });
+
+  test('Component toHTML with special character content', () => {
+    obj = new ComponentText({
+      attributes: { 'data-test': 'value' },
+      content: 'test content <3'
+    });
+    expect(obj.toHTML()).toEqual(
+      '<div data-test="value">test content &lt;3</div>'
+    );
+  });
 });
 
 describe('Link Component', () => {
