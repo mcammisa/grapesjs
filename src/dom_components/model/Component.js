@@ -946,10 +946,16 @@ const Component = Backbone.Model.extend(Styleable).extend(
         }
       }
 
+      const content = model
+        .get('content')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
       let attrString = attrs.length ? ` ${attrs.join(' ')}` : '';
-      let code = `<${tag}${attrString}${sTag ? '/' : ''}>${escape(model.get(
-        'content'
-      ))}`;
+      let code = `<${tag}${attrString}${sTag ? '/' : ''}>${content}`;
       model.get('components').each(comp => (code += comp.toHTML(opts)));
       !sTag && (code += `</${tag}>`);
 
