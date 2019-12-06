@@ -30225,8 +30225,9 @@ var Component = backbone__WEBPACK_IMPORTED_MODULE_5___default.a.Model.extend(dom
       }
     }
 
+    var content = model.get('content').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     var attrString = attrs.length ? " ".concat(attrs.join(' ')) : '';
-    var code = "<".concat(tag).concat(attrString).concat(sTag ? '/' : '', ">").concat(escape(model.get('content')));
+    var code = "<".concat(tag).concat(attrString).concat(sTag ? '/' : '', ">").concat(content);
     model.get('components').each(function (comp) {
       return code += comp.toHTML(opts);
     });
@@ -36861,7 +36862,7 @@ var defaultConfig = {
   editors: editors,
   plugins: plugins,
   // Will be replaced on build
-  version: '0.15.10',
+  version: '0.15.11',
 
   /**
    * Initialize the editor with passed options
