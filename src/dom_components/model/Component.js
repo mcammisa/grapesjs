@@ -947,9 +947,9 @@ const Component = Backbone.Model.extend(Styleable).extend(
       }
 
       let attrString = attrs.length ? ` ${attrs.join(' ')}` : '';
-      let code = `<${tag}${attrString}${sTag ? '/' : ''}>${model.get(
+      let code = `<${tag}${attrString}${sTag ? '/' : ''}>${escape(model.get(
         'content'
-      )}`;
+      ))}`;
       model.get('components').each(comp => (code += comp.toHTML(opts)));
       !sTag && (code += `</${tag}>`);
 
